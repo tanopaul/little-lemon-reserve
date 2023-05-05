@@ -9,24 +9,15 @@
   grid: 100px / 0.5fr 2.5fr;
 }
 
-.red {
-  background-color: red;
-  height: 50vh;
-}
 
-.yellow {
-  background-color: rgb(244, 206, 20);
-
-  width: 100vw;
-  height: 90vh;
-} 
+/* -------------------------NAV-------------------------- */
 
 .nav {
   background-color: rgb(73, 94, 87);
-
+  z-index: 5;
   position: fixed;
   height: 100vh;
-  width: 14vw;
+  width: 240px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -89,3 +80,63 @@
   color: rgb(73, 94, 87);
 }
 
+/* ---------------RESERVATIONS----------------- */
+
+.reservations-sec {
+  /* background-color: rgb(244, 206, 20); */
+  background-image: url('./assets/EDITED-yellow-background.jpg');
+  background-size: contain;
+  
+  
+  width: 100vw;
+  z-index: 1;
+  height: 90vh;
+} 
+
+.reservations-div {
+  position: absolute;
+  text-align: center;
+  font-size: 2rem;
+  width: 89%;
+  top: 70px;
+  right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.reservations-div h3 {
+  font-size: 1rem;
+  background-color: #FBDABB;
+  border: 1px solid black;
+  width: 300px;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+}
+
+.reservations-div h1 {
+  font-size: 3rem;
+  background-color: #FBDABB;
+  border: 1px solid black;
+  padding: 0.5rem 5rem;
+}
+
+
+/* -------------------FOOTER--------------------- */
+
+
+.footer {
+  background-color: #333333;
+  height: 50vh;
+  width: 100%;
+  z-index: 1;
+}
+
+.footer-div-social {
+  background-color: gray;
+  display: flex;
+  justify-content: end;
+  padding: 0.5rem;
+  margin-right: px;
+}
