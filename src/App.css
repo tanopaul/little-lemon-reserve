@@ -10,6 +10,10 @@
 }
 
 
+@import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&display=swap');
+
+
+
 /* -------------------------NAV-------------------------- */
 
 .nav {
@@ -41,6 +45,8 @@
   font-size: 2.5rem;
   padding: 0 1rem;
   text-align: center;
+  font-family: 'Fascinate Inline', cursive;
+  letter-spacing: 2px;
 }
 
 .nav-menu li {
@@ -107,24 +113,46 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: 'Fascinate Inline';
 }
+
+.locations-form, 
+.date-form,
+.time-form,
+.party-form {
+  padding: 10px 20px 8px 12px;
+  width: 200px;
+  font-size: 16px;
+  border: 5px solid #FFCB00;
+  border-radius: 5px;
+}
+
+.submit {
+  background-color: rgb(73, 94, 87);
+  border: none;
+  color: rgb(244, 206, 20);
+  font-weight: bold;
+  font-size: 20px;
+}
+
 
 .reservations-div h3 {
   font-size: 1rem;
-  background-color: #FBDABB;
-  border: 1px solid rgb(73, 94, 87);
-  width: 300px;
+  background-color: #FFFFFF;
+  border: 5px solid #FFCB00;
+  width: 380px;
   padding: 0.5rem 1rem;
   margin-bottom: -5px; 
   z-index: 2;
   border-radius: 5px;
   font-style: italic;
+  letter-spacing: 2px;
 }
 
 .reservations-div h1 {
   font-size: 3rem;
-  background-color: #FBDABB;
-  border: 1px solid rgb(73, 94, 87);
+  background-color: #FFFFFF;
+  border: 5px solid #FFCB00;
   padding: 0.5rem 5rem;
   z-index: 1;
   letter-spacing: 4px;
@@ -162,6 +190,20 @@ form {
   width: auto;
   margin-top: 50px;
   padding: 0.5rem 1rem;
+  transition: all 0.2s ease-in;
+}
+
+.submit:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.disclaimers {
+  text-align: center;
+}
+
+.disclaimers h6 {
+  margin-bottom: 10px;
 }
 
 
@@ -173,12 +215,36 @@ form {
   height: 50vh;
   width: 100%;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
 }
 
 .footer-div-social {
   background-color: gray;
   display: flex;
-  justify-content: end;
+  justify-content: center;
   padding: 0.5rem;
-  margin-right: px;
+  width: 100%;
+}
+
+.footer-div-social img {
+  border: 1px solid rgb(244, 206, 20);
+  margin: 5px 20px;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+.footer-lists {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.footer-lists ul li {
+  list-style: none;
+  margin-bottom: 10px;
 }
