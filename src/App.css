@@ -286,9 +286,23 @@
 }
 
 
+.confirmed-p {
+  color: green;
+  font-weight: bold;
+}
 
-
-
+.confirmation {
+  background-color: white;
+  width: 50%;
+  height: 200px;
+  border: 5px solid #FFCB00;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 50px;
+}
 
 
 

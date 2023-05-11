@@ -20,13 +20,14 @@ import { useState } from 'react';
 
 function Reserve() {
 
-
+        let timeArr = ['0'];
        
 
 
         const [display, setDisplay] = useState(false);
         const [display2, setDisplay2] = useState(false);
         const [display3, setDisplay3] = useState(false);
+        const [times, setTimes] = useState([0, 0, 0, 0, 0]);
         const [form, setForm] = useState({
             location: "",
             date: "",
@@ -40,7 +41,7 @@ function Reserve() {
             requests: "",
             newsLetter: false
         })
-        const finalMessage = `Your reservation on DATE at TIME in our LOCATION for PEOPLE is confirmed. See you soon, ${form.firstName}!`
+        const finalMessage = `Your reservation on ${form.date} at ${form.timeChosen} in our ${form.location} location for ${form.party} is confirmed. See you soon, ${form.firstName}!`
         
         function changeDisplay(event) {
             
@@ -49,13 +50,48 @@ function Reserve() {
                 [event.target.name]: event.target.value
             })
 
-            // console.log(form) 
+            
+            const locationObj = {
+                cary: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
+                durham: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
+                chapelHill: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
+                raleigh: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"]
+            }
 
+            
+            
+    
+            
+            let chosenTime = locationObj[`${form.location.toLowerCase()}`];
+    
+            let chosenTimeIndex = locationObj[`${form.location.toLowerCase()}`].findIndex(element => element === form.time);
 
+            
+
+            for (let i = chosenTimeIndex; i < chosenTimeIndex + 6; i++) {
+                setTimes(times.shift());
+                setTimes(times.push(chosenTime[i]));
+            }
+
+            
+
+            timeArr.shift();
+            console.log(times)
+            
             setDisplay(true);
+            
         }
 
-        function changeDisplay2() {
+        
+
+        function changeDisplay2(event) {
+
+            setForm({
+                ...form, 
+                [event.target.attributes.name.nodeValue]: event.target.innerHTML
+            })
+            
+            
             setDisplay2(true);
         }
 
@@ -66,10 +102,51 @@ function Reserve() {
         const handleChange = (event) => {
             setForm({
                 ...form, 
-                [event.target.name]: event.target.value
+                [event.target.name]: event.target.name === 'newsLetter' ? !event.target.value : event.target.value
             })
-        
+            
+            console.log(form)
         }
+
+
+        
+
+
+
+        // function displayTimes() {
+
+        //     const locationObj = {
+        //         cary: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
+        //         durham: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
+        //         chapelHill: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
+        //         raleigh: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"]
+        //     }
+    
+            
+        //     let chosenTime = locationObj[`${form.location.toLowerCase()}`];
+    
+        //     let chosenTimeIndex = locationObj[`${form.location.toLowerCase()}`].findIndex(element => element === form.time);
+
+        //     setTimes(chosenTimeIndex)
+        // }
+
+       
+            
+        
+           
+            
+        
+
+        
+        console.log(times[1])
+        
+
+        
+
+
+
+
+
 
     return (
         <div>
@@ -83,55 +160,54 @@ function Reserve() {
                     <div className='input-div'>
                         <div className='location-div'>
                             <label for= "location">Location</label>
-                            <select name= "locations" id='location' className='locations-form'>
-                                <option name="date" value=""> </option>
-                                <option name="date" value={form.location}>Raleigh</option>
-                                <option name="date" value={form.location}>Cary</option>
-                                <option name="date" value={form.location}>Durham</option>
-                                <option name="date" value={form.location}>Chapel Hill</option>
+                            <select name= "location" onChange={handleChange} id='location' className='locations-form'>
+                                <option> </option>
+                                <option>Raleigh</option>
+                                <option>Cary</option>
+                                <option>Durham</option>
+                                <option>Chapel Hill</option>
                             </select>
                         </div>
                         <div className='location-div'>
                             <label for= "location1">Date</label>
-                            <input type='date' id='location1' className='date-form'></input>
+                            <input type='date' name='date' value={form.date} onChange={handleChange} id='location1' className='date-form'></input>
                         </div>
                         <div className='location-div'>
                             <label for= "time">Time</label>
-                            <select name= "locations" id='time' className='time-form'>
-                                <option name="time" value=""> </option>
-                                <option name="time" value="9am">09:00 AM</option>
-                                <option name="time" value="9:30am">09:30 AM</option>
-                                <option name="time" value="10am">10:00 AM</option>
-                                <option name="time" value="10:30am">10:30 AM</option>
-                                <option name="time" value="11am">11:00 AM</option>
-                                <option name="time" value="11:30am">11:30 AM</option>
-                                <option name="time" value="12pm">12:00 PM</option>
-                                <option name="time" value="12:30pm">12:00 PM</option>
-                                <option name="time" value="1pm">01:00 PM</option>
-                                <option name="time" value="1:30pm">01:00 PM</option>
-                                <option name="time" value="2pm">02:00 PM</option>
-                                <option name="time" value="2:30pm">02:30 PM</option>
-                                <option name="time" value="3pm">03:00 PM</option>
-                                <option name="time" value="3:30pm">03:30 PM</option>
-                                <option name="time" value="4pm">04:00 PM</option>
-                                <option name="time" value="4:30pm">04:30 PM</option>
-                                <option name="time" value="5pm">05:00 PM</option>
+                            <select name= "time" onChange={handleChange} id='time' className='time-form'>
+                                <option>09:00 AM</option>
+                                <option>09:30 AM</option>
+                                <option>10:00 AM</option>
+                                <option>10:30 AM</option>
+                                <option>11:00 AM</option>
+                                <option>11:30 AM</option>
+                                <option>12:00 PM</option>
+                                <option>12:00 PM</option>
+                                <option>01:00 PM</option>
+                                <option>01:00 PM</option>
+                                <option>02:00 PM</option>
+                                <option>02:30 PM</option>
+                                <option>03:00 PM</option>
+                                <option>03:30 PM</option>
+                                <option>04:00 PM</option>
+                                <option>04:30 PM</option>
+                                <option>05:00 PM</option>
                             </select>
                         </div>
                         <div className='location-div'>
                             <label for= "party">Party Size</label>
-                            <select name= "locations" id='party' className='party-form'>
-                                <option name="party" value=""> </option>
-                                <option name= "party" value="1">1 Person</option>
-                                <option name= "party" value="2">2 People</option>
-                                <option name= "party" value="3">3 People</option>
-                                <option name= "party" value="4">4 People</option>
-                                <option name= "party" value="5">5 People</option>
-                                <option name= "party" value="6">6 People</option>
-                                <option name= "party" value="7">7 People</option>
-                                <option name= "party" value="8">8 People</option>
-                                <option name= "party" value="9">9 People</option>
-                                <option name= "party" value="10">10+ People</option>
+                            <select name= "party" id='party' onChange={handleChange} className='party-form'>
+                                <option> </option>
+                                <option>1 Person</option>
+                                <option>2 People</option>
+                                <option>3 People</option>
+                                <option>4 People</option>
+                                <option>5 People</option>
+                                <option>6 People</option>
+                                <option>7 People</option>
+                                <option>8 People</option>
+                                <option>9 People</option>
+                                <option>10+ People</option>
                             </select>
                         </div>
                     </div>
@@ -141,11 +217,11 @@ function Reserve() {
                 <div className='available-time' style={display ? {display: ""} : {display: "none"}}>
                     <p>Please select your preferred time</p>
                     <ul>
-                        <li onClick={changeDisplay2}>11:00 AM</li>
-                        <li onClick={changeDisplay2}>12:00 PM</li>
-                        <li onClick={changeDisplay2}>1:00 PM</li>
-                        <li onClick={changeDisplay2}>2:00 PM</li>
-                        <li onClick={changeDisplay2}>3:00 PM</li>
+                        <li value="11" name="timeChosen" onClick={changeDisplay2}>{times[0]}</li>
+                        <li value="12" name="timeChosen" onClick={changeDisplay2}>{times[1]}</li>
+                        <li value="1" name="timeChosen" onClick={changeDisplay2}>{times[2]}</li>
+                        <li value="2" name="timeChosen" onClick={changeDisplay2}>{times[3]}</li>
+                        <li value="3" name="timeChosen" onClick={changeDisplay2}>{times[4]}</li>
                     </ul>
                 </div>
 
@@ -168,15 +244,16 @@ function Reserve() {
                     </div>
                     <div className='info-form-div checkbox-div'>
                         <label for="special-requests">Special Requests</label>
-                        <textarea id='special-requests' rows="4" className='info-form-box'></textarea>
+                        <textarea onChange={handleChange} name='requests' value={form.requests} id='special-requests' rows="4" className='info-form-box'></textarea>
                     </div>
                     <div className='checkbox-div'>
-                        <input type='checkbox' id='checkbox' className='info-form-box'/>
+                        <input type='checkbox' onChange={handleChange} name='newsLetter' value={form.newsLetter} id='checkbox' className='info-form-box'/>
                         <label for="checkbox" className='checkbox-label'>Sign me up to receive dining offers and news from this restaurant by email.</label>
                     </div>
                     <div className='submit' onClick={changeDisplay3}>CONFIRM TABLE</div>
                 </form>
-                <div style={display3 ? {display: ""} : {display: "none"}}>
+                <div className='confirmation' style={display3 ? {display: ""} : {display: "none"}}>
+                    <p className='confirmed-p'>CONFIRMED!</p>
                     <p>{finalMessage}</p>
                     <p>Phone: {form.phone}</p>
                     <p>Email: {form.email}</p>
