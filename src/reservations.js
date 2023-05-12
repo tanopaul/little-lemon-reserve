@@ -49,30 +49,6 @@ function Reserve() {
                 ...form, 
                 [event.target.name]: event.target.value
             })
-
-            
-            const locationObj = {
-                cary: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
-                durham: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
-                chapelHill: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
-                raleigh: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"]
-            }
-
-            
-            
-    
-            
-            let chosenTime = locationObj[`${form.location.toLowerCase()}`];
-    
-            let chosenTimeIndex = locationObj[`${form.location.toLowerCase()}`].findIndex(element => element === form.time);
-
-            
-
-            for (let i = chosenTimeIndex; i < chosenTimeIndex + 6; i++) {
-                setTimes(times.shift());
-                setTimes(times.push(chosenTime[i]));
-            }
-
             
 
             timeArr.shift();
@@ -104,8 +80,31 @@ function Reserve() {
                 ...form, 
                 [event.target.name]: event.target.name === 'newsLetter' ? !event.target.value : event.target.value
             })
+
+            if (event.target.name === 'party') {
+                const locationObj = {
+                    cary: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
+                    durham: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
+                    chapelHill: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
+                    raleigh: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"]
+                }
+
+                let newArr= [];
+
+                let timeArr = locationObj[`${form.location.toLowerCase()}`];
+                let timeArrIndex = timeArr.findIndex(element => element === form.time)
+                
+                for (let i = timeArrIndex; i < timeArrIndex + 5; i++) {
+                    
+                    newArr.push(timeArr[i])
+                }
+                setTimes(newArr);
+
+                console.log(newArr)
+    
+            }
             
-            console.log(form)
+            
         }
 
 
