@@ -5,14 +5,6 @@ import pinterest from './assets/icons8-pinterest-a-social-media-web-and-mobile-a
 import twitter from './assets/icons8-twitter-32 (1).png';
 import { useState } from 'react';
 
-//18
-
-// const locationObj = {
-//     cary: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
-//     durham: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
-//     chapelHill: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
-//     raleigh: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"]
-// }
 
 
 
@@ -43,12 +35,16 @@ function Reserve() {
         })
         const finalMessage = `Your reservation on ${form.date} at ${form.timeChosen} in our ${form.location} location for ${form.party} is confirmed. See you soon, ${form.firstName}!`
         
-        function changeDisplay(event) {
+        function changeDisplay() {
             
-            setForm({
-                ...form, 
-                [event.target.name]: event.target.value
-            })
+        
+            // setForm({
+            //     ...form, 
+            //     [event.target.name]: event.target.value
+            // })
+
+            // console.log(form)
+            
             
 
             timeArr.shift();
@@ -81,12 +77,14 @@ function Reserve() {
                 [event.target.name]: event.target.name === 'newsLetter' ? !event.target.value : event.target.value
             })
 
-            if (event.target.name === 'party') {
+            console.log(form)
+
+            if (event.target.name === 'party' && form.time !== "") {
                 const locationObj = {
-                    cary: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
-                    durham: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
-                    chapelHill: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
-                    raleigh: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"]
+                    cary: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM"],
+                    durham: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM"],
+                    chapelHill: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM"],
+                    raleigh: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM", "05:00 PM"]
                 }
 
                 let newArr= [];
@@ -102,49 +100,10 @@ function Reserve() {
 
                 console.log(newArr)
     
-            }
+            } 
             
             
         }
-
-
-        
-
-
-
-        // function displayTimes() {
-
-        //     const locationObj = {
-        //         cary: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
-        //         durham: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
-        //         chapelHill: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"],
-        //         raleigh: ["08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM", "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"]
-        //     }
-    
-            
-        //     let chosenTime = locationObj[`${form.location.toLowerCase()}`];
-    
-        //     let chosenTimeIndex = locationObj[`${form.location.toLowerCase()}`].findIndex(element => element === form.time);
-
-        //     setTimes(chosenTimeIndex)
-        // }
-
-       
-            
-        
-           
-            
-        
-
-        
-        console.log(times[1])
-        
-
-        
-
-
-
-
 
 
     return (
@@ -174,6 +133,7 @@ function Reserve() {
                         <div className='location-div'>
                             <label for= "time">Time</label>
                             <select name= "time" onChange={handleChange} id='time' className='time-form'>
+                                <option> </option>
                                 <option>09:00 AM</option>
                                 <option>09:30 AM</option>
                                 <option>10:00 AM</option>
@@ -187,10 +147,7 @@ function Reserve() {
                                 <option>02:00 PM</option>
                                 <option>02:30 PM</option>
                                 <option>03:00 PM</option>
-                                <option>03:30 PM</option>
-                                <option>04:00 PM</option>
-                                <option>04:30 PM</option>
-                                <option>05:00 PM</option>
+                                
                             </select>
                         </div>
                         <div className='location-div'>
@@ -227,19 +184,19 @@ function Reserve() {
                 <form className='info-form' style={display2 ? {display: ""} : {display: "none"}} >
                     <div className='info-form-div'>
                         <label for="first-name">First Name</label>
-                        <input onChange={handleChange} name='firstName' value={form.firstName} type='text' id='first-name' className='info-form-box'/>
+                        <input required onChange={handleChange} name='firstName' value={form.firstName} type='text' id='first-name' className='info-form-box'/>
                     </div>
                     <div className='info-form-div'>
                         <label for="last name">Last Name</label>
-                        <input onChange={handleChange} name='lastName' value={form.lastName} type='text' id='last name' className='info-form-box'/>
+                        <input required onChange={handleChange} name='lastName' value={form.lastName} type='text' id='last name' className='info-form-box'/>
                     </div>
                     <div className='info-form-div'>
                         <label for="phone-number">Phone Number</label>
-                        <input onChange={handleChange} name='phone' value={form.phone} type='phone' id='phone-number' className='info-form-box'/>
+                        <input required onChange={handleChange} name='phone' value={form.phone} type='phone' id='phone-number' className='info-form-box'/>
                     </div>
                     <div className='info-form-div'>
                         <label for="email">Email</label>
-                        <input onChange={handleChange} name='email' value={form.email} type='email' id='email' className='info-form-box'/>
+                        <input required onChange={handleChange} name='email' value={form.email} type='email' id='email' className='info-form-box'/>
                     </div>
                     <div className='info-form-div checkbox-div'>
                         <label for="special-requests">Special Requests</label>
