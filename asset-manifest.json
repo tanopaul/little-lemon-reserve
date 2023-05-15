@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/little-lemon-reserve/static/css/main.ad1ade6e.css",
+    "main.js": "/little-lemon-reserve/static/js/main.9e472ac0.js",
+    "static/js/787.6abcccca.chunk.js": "/little-lemon-reserve/static/js/787.6abcccca.chunk.js",
+    "static/media/EDITED-yellow-background.jpg": "/little-lemon-reserve/static/media/EDITED-yellow-background.9fe2e47e665f3fd9a170.jpg",
+    "static/media/Asset 9@4x.png": "/little-lemon-reserve/static/media/Asset 9@4x.b8445110e4e49b6b30a0.png",
+    "index.html": "/little-lemon-reserve/index.html",
+    "main.ad1ade6e.css.map": "/little-lemon-reserve/static/css/main.ad1ade6e.css.map",
+    "main.9e472ac0.js.map": "/little-lemon-reserve/static/js/main.9e472ac0.js.map",
+    "787.6abcccca.chunk.js.map": "/little-lemon-reserve/static/js/787.6abcccca.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ad1ade6e.css",
+    "static/js/main.9e472ac0.js"
+  ]
+}
